@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>office-42 — a word processor, a spreadsheet and a notebook, written from scratch in C</title>
+<meta name="description" content="Three desktop programs in the shape of the classics: word42, office42 and math42. Free software in C on GTK 4, Pango and Cairo.">
+<style>
+  :root {
+    --ink: #1a1d21;
+    --dim: #5a6371;
+    --line: #d8dde5;
+    --paper: #ffffff;
+    --wash: #f4f6f9;
+    --blue: #1f497d;
+    --accent: #2e6da4;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font: 17px/1.6 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+  }
+  header {
+    background: linear-gradient(180deg, var(--blue) 0%, #16345a 100%);
+    color: #fff;
+    padding: 4.5rem 1.5rem 3.5rem;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0 0 .6rem;
+    font-size: clamp(2.1rem, 5vw, 3.1rem);
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+  header p {
+    margin: 0 auto;
+    max-width: 46rem;
+    font-size: clamp(1.05rem, 2.3vw, 1.25rem);
+    color: #cfdcec;
+  }
+  header .rule {
+    width: 4rem; height: 3px; background: #7ba7d7;
+    margin: 1.6rem auto 0; border-radius: 2px;
+  }
+  main { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem; }
+  section.program {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  section.program:last-of-type { border-bottom: 0; }
+  .program h2 {
+    font-size: 1.9rem; margin: 0 0 .2rem; color: var(--blue); font-weight: 600;
+  }
+  .program .what { color: var(--dim); margin: 0 0 1.2rem; font-size: 1.05rem; }
+  .program p { margin: 0 0 1rem; }
+  figure { margin: 1.6rem 0 1.2rem; }
+  figure img {
+    width: 100%; height: auto; display: block;
+    border: 1px solid var(--line); border-radius: 4px;
+    box-shadow: 0 8px 28px rgba(20, 40, 70, .13);
+    background: var(--wash);
+  }
+  figcaption { color: var(--dim); font-size: .92rem; margin-top: .6rem; }
+  ul.points { margin: 0 0 1.2rem; padding-left: 1.2rem; }
+  ul.points li { margin: .25rem 0; }
+  .links a {
+    display: inline-block; margin: 0 .8rem .4rem 0;
+    color: var(--accent); text-decoration: none; font-weight: 600;
+    border-bottom: 1px solid rgba(46, 109, 164, .35);
+  }
+  .links a:hover { border-bottom-color: var(--accent); }
+  .creed {
+    background: var(--wash);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 3rem 1.5rem;
+  }
+  .creed .inner { max-width: 62rem; margin: 0 auto; }
+  .creed h2 { color: var(--blue); font-size: 1.5rem; margin: 0 0 1rem; font-weight: 600; }
+  .creed ul { margin: 0; padding-left: 1.2rem; }
+  .creed li { margin: .4rem 0; }
+  footer {
+    padding: 2.5rem 1.5rem 3.5rem; text-align: center;
+    color: var(--dim); font-size: .92rem;
+  }
+  footer a { color: var(--accent); }
+  code {
+    font: .92em/1.4 "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    background: var(--wash); padding: .1em .35em; border-radius: 3px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #e8ecf2; --dim: #a3adbb; --line: #2a3340; --paper: #12161c; --wash: #1a212b; --accent: #7fb2e5; }
+    figure img { box-shadow: 0 8px 28px rgba(0, 0, 0, .5); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>office-42</h1>
+  <p>A word processor, a spreadsheet and a mathematics notebook — written from
+     scratch in C on GTK 4, Pango and Cairo, in the shape of the programs that
+     taught everybody what those things are.</p>
+  <div class="rule"></div>
+</header>
+
+<main>
+
+  <section class="program" id="word42">
+    <h2>word42</h2>
+    <p class="what">A word processor.</p>
+    <p>A menu bar, two toolbars, a ruler, a status bar and a page. Styles,
+       tables, footnotes, columns, headers and footers, mail merge, spelling,
+       an outline view and a page-layout view that shows the paper it will be
+       printed on.</p>
+    <figure>
+      <img src="images/word42.png" alt="word42 in page-layout view: a document with a title, headings, a bulleted list, a dropped capital and a table, on the page it will be printed on">
+      <figcaption>word42 in page-layout view.</figcaption>
+    </figure>
+    <ul class="points">
+      <li>Reads and writes <code>.docx</code>, <code>.doc</code>,
+          <code>.odt</code>, <code>.rtf</code>, HTML, Markdown and plain text.</li>
+      <li>Prints, and exports PDF with real text in it rather than a picture.</li>
+      <li>Undo for everything, and a document model that keeps what it was told.</li>
+    </ul>
+    <p class="links">
+      <a href="https://github.com/office-42/word42">Source on GitHub</a>
+      <a href="https://github.com/office-42/word42/blob/main/docs/GUIDE.md">User guide</a>
+      <a href="https://github.com/office-42/word42/blob/main/docs/BUILD.md">Building it</a>
+    </p>
+  </section>
+
+  <section class="program" id="office42">
+    <h2>office42</h2>
+    <p class="what">A spreadsheet.</p>
+    <p>A grid, a formula bar, a name box, two toolbars and sheet tabs. Five
+       hundred and sixty-one functions, thirteen kinds of chart, pivot tables,
+       the analysis tools, conditional formatting, form controls, and a
+       recalculation that knows what depends on what.</p>
+    <figure>
+      <img src="images/office42.png" alt="office42 with a small sales sheet: a heading set in two fonts in one cell, a named cell style on the headings, currency and percent formats, a conditional format, a note, a text box and a three-dimensional column chart">
+      <figcaption>office42 with a small sales sheet, a note, a text box and a 3-D chart.</figcaption>
+    </figure>
+    <ul class="points">
+      <li>Reads and writes <code>.gnumeric</code>, <code>.xlsx</code>,
+          <code>.xls</code>, <code>.ods</code>, CSV and HTML; prints and
+          exports PDF, and reads one back.</li>
+      <li><strong>Python</strong> is the macro language — in a console, in
+          <code>=PY()</code>, in functions of your own, and recorded from what
+          you do.</li>
+      <li>A book can carry a whole <strong>SQLite database</strong> inside it,
+          and <code>=SQLVALUE()</code> asks it from a cell.</li>
+      <li><code>office42-calc</code> drives the same engine from a terminal.</li>
+    </ul>
+    <p class="links">
+      <a href="https://github.com/office-42/office42">Source on GitHub</a>
+      <a href="https://github.com/office-42/office42/blob/main/docs/GUIDE.md">User guide</a>
+      <a href="https://github.com/office-42/office42/blob/main/docs/PARITY.md">How far it is from Excel</a>
+      <a href="https://github.com/office-42/office42/blob/main/docs/PYTHON.md">Python</a>
+      <a href="https://github.com/office-42/office42/blob/main/docs/DATABASE.md">The database</a>
+    </p>
+  </section>
+
+  <section class="program" id="math42">
+    <h2>math42</h2>
+    <p class="what">A mathematics notebook.</p>
+    <p>Type an expression, press Enter, and the answer is set as mathematics:
+       fractions stacked, powers raised, roots under a radical, matrices in
+       brackets, graphs drawn. It speaks two languages — <code>Sin[Pi/2]</code>
+       and <code>sin(pi/2)</code> both work.</p>
+    <figure>
+      <img src="images/math42.png" alt="math42: a notebook of input and output cells, with fractions, an integral, a matrix and a plot">
+      <figcaption>math42, a page of a notebook.</figcaption>
+    </figure>
+    <ul class="points">
+      <li>Exact whole numbers and fractions, and whole numbers with no ceiling.</li>
+      <li>Calculus, linear algebra, statistics, differential equations and
+          transforms — the mathematics an engineering degree teaches.</li>
+      <li>Notebooks are plain text, played back from the top, so a page is
+          reproducible by construction.</li>
+    </ul>
+    <p class="links">
+      <a href="https://github.com/office-42/math42">Source on GitHub</a>
+      <a href="https://github.com/office-42/math42/blob/main/docs/USER-GUIDE.md">User guide</a>
+    </p>
+  </section>
+
+</main>
+
+<div class="creed">
+  <div class="inner">
+    <h2>The same principles, in all three</h2>
+    <ul>
+      <li><strong>C, and not much of it.</strong> GTK 4, Pango, Cairo and GLib;
+          no framework, no bindings, no generated code.</li>
+      <li><strong>The shape of the classics.</strong> A menu bar and toolbars
+          that stay where you left them; no ribbon, no cloud, no account.</li>
+      <li><strong>Honest about what it cannot do.</strong> Every one of them
+          ships a review of itself that says where it falls short.</li>
+      <li><strong>Free software</strong>, GPL-3.0-or-later, and it runs on
+          Linux, macOS and Windows.</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <p>Free software under the GPL, version 3 or later.
+     <a href="https://github.com/office-42">Everything is on GitHub</a>.</p>
+  <p>These programs are independent. They are not affiliated with, endorsed by
+     or derived from Microsoft, The Document Foundation, the GNOME Foundation
+     or Wolfram Research, and carry no code or artwork of theirs. The names
+     used to say what a file format is, or what a program resembles, belong to
+     their owners.</p>
+</footer>
+
+</body>
+</html>
