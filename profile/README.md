@@ -1,53 +1,74 @@
 <div align="center">
 
-# 📊 Office 42
+# 🏢 Office 42
 
-**A lightweight, schema-driven spreadsheet and data computation engine.**
+**A modular, lightweight productivity suite and computational engine.**
 
 [![Status](https://img.shields.io/badge/status-active_development-blue?style=flat-square)](#)
+[![Suite](https://img.shields.io/badge/suite-word42%20%7C%20office42%20%7C%20math42-orange?style=flat-square)](#)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](#)
-[![Tech](https://img.shields.io/badge/focus-data_engine-orange?style=flat-square)](#)
 
 ---
 
 <p align="center">
-  Office 42 focuses on building a fast, minimal, and embeddable spreadsheet core designed for reliable calculation pipelines, clean data schemas, and lightweight UI frontends.
+  Office 42 delivers fast, minimal, and dependency-light desktop/web productivity tools focused on clean architecture, schema-driven data structures, and deterministic evaluation engines.
 </p>
 
 </div>
 
 <br />
 
-### 🎯 Key Goals
-
-* **Lightweight Core:** Minimal memory footprint without bloated office suite dependencies.
-* **Deterministic Calculation Engine:** Robust formula parsing and dependency graph resolution.
-* **Schema-Driven Data:** Clean separation between tabular layout, raw schema models, and rendering layers.
-* **Modern Tooling:** Designed for seamless integration into web and desktop environments.
-
----
-
-### 📦 Repositories & Architecture
+### 🧰 Applications in the Suite
 
 <table>
   <tr>
-    <td width="50%" valign="top">
-      <h4>⚙️ Engine & Calculation</h4>
-      <p>Core parser, dependency resolution graph, formula evaluation, and memory-efficient cell grids.</p>
+    <td width="33%" valign="top">
+      <h3>📄 <a href="https://github.com/office-42/word42">word42</a></h3>
+      <p><b>Document & Text Processing</b></p>
+      <p>A streamlined word processor focused on clean document structure, markdown/rich-text rendering, fast formatting pipelines, and distraction-free editing without legacy bloat.</p>
+      <ul>
+        <li><a href="https://github.com/office-42/word42">View Repository &rarr;</a></li>
+      </ul>
     </td>
-    <td width="50%" valign="top">
-      <h4>🖥️ UI & Integrations</h4>
-      <p>Canvas/DOM-based rendering interfaces, clipboard handlers, keyboard navigation, and export bridges.</p>
+    <td width="33%" valign="top">
+      <h3>📊 <a href="https://github.com/office-42/office42">office42</a></h3>
+      <p><b>Spreadsheet & Calculation Engine</b></p>
+      <p>A lightweight, schema-driven spreadsheet core featuring deterministic formula resolution, dynamic cell dependency graphs, and memory-efficient tabular data management.</p>
+      <ul>
+        <li><a href="https://github.com/office-42/office42">View Repository &rarr;</a></li>
+      </ul>
+    </td>
+    <td width="33%" valign="top">
+      <h3>📐 <a href="https://github.com/office-42/math42">math42</a></h3>
+      <p><b>Mathematical Computation & CAS</b></p>
+      <p>An interactive math engine designed for symbolic computation, algebraic equation solving, mathematical formula rendering, and integration with spreadsheet data pipelines.</p>
+      <ul>
+        <li><a href="https://github.com/office-42/math42">View Repository &rarr;</a></li>
+      </ul>
     </td>
   </tr>
 </table>
 
 ---
 
-### 🚀 Getting Started
+### 🧩 Architectural Philosophy
 
-Clone the repository and inspect the core packages:
+* **Decoupled Engines:** Core computation (formulas, math, parsing) is isolated from UI layers for embedded or standalone use.
+* **Minimal Footprint:** Fast startup times, low memory consumption, and zero unnecessary runtime dependencies.
+* **Interoperable Formats:** Clean JSON/schema representations and open export bridges across text, spreadsheets, and formulas.
+
+---
+
+### 🚀 Quick Start
+
+Clone any of the core components to build locally:
 
 ```bash
-git clone [https://github.com/office-42/](https://github.com/office-42/)<repository-name>.git
-cd <repository-name>
+# Clone the spreadsheet engine
+git clone [https://github.com/office-42/office42.git](https://github.com/office-42/office42.git)
+
+# Clone the document processor
+git clone [https://github.com/office-42/word42.git](https://github.com/office-42/word42.git)
+
+# Clone the math computation engine
+git clone [https://github.com/office-42/math42.git](https://github.com/office-42/math42.git)
