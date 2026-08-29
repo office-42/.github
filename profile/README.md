@@ -2,12 +2,7 @@
 
 # 🏢 Office 42
 
-**A modular, lightweight productivity suite and computational engine.**
-
-[![Status](https://img.shields.io/badge/status-active_development-blue?style=flat-square)](#)
-[![Suite](https://img.shields.io/badge/suite-word42%20%7C%20office42%20%7C%20math42-orange?style=flat-square)](#)
-[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](#)
-
+**A office suite and computational engine.**
 </div>
 
 ### 🧰 Applications in the Suite
